@@ -1,7 +1,7 @@
 ## Cronômetro utilizando React Native
 
 
-![WhatsApp Video 2020-04-27 at 20 47 11](https://user-images.githubusercontent.com/56658900/80432428-969f1200-88ca-11ea-977b-558487822a37.gif)
+![WhatsApp Video 2020-05-07 at 3 53 10 PM](https://user-images.githubusercontent.com/56658900/81334797-fb056280-907c-11ea-95f9-1e1299d44e62.gif)
 
 
 
