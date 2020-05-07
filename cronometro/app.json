@@ -1,11 +1,11 @@
 {
   "expo": {
+    "sdkVersion": "36.0.0",
     "name": "cronometro",
     "slug": "cronometro",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,16 +13,17 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#464C6E"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["assets/images/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "android":{
+      "package":"com.adoilson.conometro"
     }
   }
 }

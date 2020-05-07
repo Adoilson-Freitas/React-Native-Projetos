@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { StatusBar } from 'react-native';
+
+const Start = require('./assets/images/Iniciar.png');
+const Stop = require('./assets/images/Parar.png');
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {n:0, botao:'Iniciar'}
+    this.state = {n:0, botao:Start}
     this.timer = null;
 
     this.Iniciar = this.Iniciar.bind(this);
@@ -17,7 +21,7 @@ export default class App extends Component {
     if (this.timer != null) {
       clearInterval(this.timer);
       this.timer = null;
-      s.botao = 'Iniciar';
+      s.botao = Start;
     } else {
       this.timer = setInterval(() => {
         let s = this.state;
@@ -25,7 +29,7 @@ export default class App extends Component {
         this.setState(s);
       }, 10);
 
-      s.botao = 'Parar';
+      s.botao = Stop;
     }
 
     this.setState(s);
@@ -37,22 +41,26 @@ export default class App extends Component {
     } 
     let s = this.state;
     s.n = 0;
-    s.botao = 'Iniciar';
+    s.botao = Start;
     this.setState(s);
   }
   render() {
     return (
+     <>
+      <StatusBar barStyle='light-content' backgroundColor='#0C1021'/>
       <View style={styles.container}>
+        <Text style={styles.title}>Cronômetro</Text>
+        <ImageBackground source={require('./assets/images/principal.png')} style={styles.image}>
         <Text style={styles.timer}>{this.state.n.toFixed(2)}</Text>
-        <View style={styles.btnArea}>
-          <TouchableOpacity style={styles.btn} onPress={this.Iniciar}>
-          <Text style={styles.btnText}>{this.state.botao}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.btn} onPress={this.Restaurar}>
+       </ImageBackground>
+        <TouchableOpacity style={styles.btn} onPress={this.Restaurar}>
             <Text style={styles.btnText}>Restaurar</Text>
           </TouchableOpacity>
-        </View>
+          <TouchableOpacity style={styles.btn} onPress={this.Iniciar}>
+          <Image source={this.state.botao}/>
+          </TouchableOpacity>
       </View>
+     </>
     );
   }
 }
@@ -60,29 +68,34 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#464C6E',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontSize: 40,
+    marginTop: -40,
+    fontWeight: 'bold',
+    color: '#D2D6EF',
+  },
+  image: {
+    width: 280,
+    height: 280,
+    alignItems: "center",
+    justifyContent: "center"
+  },
   timer: {
-    color: '#000010',
-    fontSize: 50,
+    color: '#D2D6EF',
+    fontSize: 45,
     fontWeight: 'bold',
   },
-  btnArea: {
-    flexDirection: 'row',
-    height: 50,
-    marginTop: 100,
-  },
   btn: {
-   flex: 1,
-   justifyContent: 'space-around', 
    alignItems: 'center',
+   justifyContent: "center",
    height: 50,
   },
   btnText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000080',
+    fontSize: 20,
+    color: '#D2D6EF',
   },
 });
